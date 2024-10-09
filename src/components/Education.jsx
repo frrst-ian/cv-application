@@ -1,70 +1,59 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import EditEducation from "./EditEducation";
-import EducationPreview from "./EducationPreview";
+/* eslint-disable react/prop-types */
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const Education = () => {
-  const [education, setEducation] = useState([]);
-  const [currentEducation, setCurrentEducation] = useState({
-    school: "",
-    titleOfStudy: "",
-    date: "",
-  });
-  const [editingId, setEditingId] = useState(null);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCurrentEducation({ ...currentEducation, [name]: value });
+const Education = ({ educations, setEducations }) => {
+  const handleAddEducation = () => {
+    setEducations([
+      ...educations,
+      { id: uuidv4(), school: "", titleOfStudy: "", date: "" },
+    ]);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (editingId) {
-      setEducation(
-        education.map((edu) =>
-          edu.id === editingId ? { ...currentEducation, id: editingId } : edu
-        )
-      );
-      setEditingId(null);
-    } else {
-      const newEducation = {
-        id: uuidv4(),
-        ...currentEducation,
-      };
-      setEducation([...education, newEducation]);
-    }
-    setCurrentEducation({ school: "", titleOfStudy: "", date: "" });
-  };
-
-  const handleEdit = (id) => {
-    const eduToEdit = education.find((edu) => edu.id === id);
-    setCurrentEducation(eduToEdit);
-    setEditingId(id);
-  };
-
-  const handleDelete = (id) => {
-    setEducation(education.filter((edu) => edu.id !== id));
+  const handleEducationChange = (id, field, value) => {
+    setEducations(
+      educations.map((edu) =>
+        edu.id === id ? { ...edu, [field]: value } : edu
+      )
+    );
   };
 
   return (
-    <div className="education">
-      <h2 className="education-header-text">Education</h2>
+    <div>
+      {educations.map((edu) => (
+        <div className="education-form" key={edu.id}>
+          <h2>Education</h2>
 
-      <EditEducation
-        education={currentEducation}
-        onInputChange={handleInputChange}
-        onSubmit={handleSubmit}
-      />
-
-      {education.map((edu) => (
-        <EducationPreview
-          key={edu.id}
-          education={edu}
-          onEdit={() => handleEdit(edu.id)}
-          onDelete={() => handleDelete(edu.id)}
-        />
+          <input
+            type="text"
+            value={edu.school}
+            onChange={(e) =>
+              handleEducationChange(edu.id, "school", e.target.value)
+            }
+            placeholder="School"
+          />
+          <input
+            type="text"
+            value={edu.titleOfStudy}
+            onChange={(e) =>
+              handleEducationChange(edu.id, "titleOfStudy", e.target.value)
+            }
+            placeholder="Title of Study"
+          />
+          <input
+            type="text"
+            value={edu.date}
+            onChange={(e) =>
+              handleEducationChange(edu.id, "date", e.target.value)
+            }
+            placeholder="Date"
+          />
+        </div>
       ))}
+      <button className="btn" onClick={handleAddEducation}>
+        Add Education
+      </button>
     </div>
   );
 };

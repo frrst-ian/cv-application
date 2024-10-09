@@ -44,16 +44,67 @@ h6 {
   isolation: isolate;
 }
 
-
-
-.personal-form {
-    display: flex;
-    justify-content: center;
-    gap:2em;
+.app {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
 }
 
-.cv-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.personal-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 24px;
+}
+
+#header-personal-info {
+  margin: 40px 0 0 0;
+}
+
+.education-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  padding: 8px;
+  border: 1px black solid;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.cv-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 40px 0 0 0;
+  border: 2px black solid;
+  padding: 16px;
+  box-shadow: 0px 0px 8px rgba(0,0,0,.5);
+  min-width: 400px;
+}
+
+p#name {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  border-radius: 6px;
 }

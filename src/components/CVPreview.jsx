@@ -1,34 +1,23 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 import React from 'react';
-import { useReactToPrint } from 'react-to-print';
 
-const CVPreview = ({ personalInfo, education }) => {
-  const componentRef = React.useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
-
+const CVPreview = React.forwardRef(({ personalInfo, educations }, ref) => {
   return (
-    <div>
-      <div ref={componentRef}>
-        <h2>Personal Information</h2>
-        <p>Name: {personalInfo.name}</p>
-        <p>Email: {personalInfo.email}</p>
-        <p>Phone: {personalInfo.phone}</p>
-
-        <h2>Education</h2>
-        {education.map((edu) => (
-          <div key={edu.id}>
-            <h3>{edu.school}</h3>
-            <p>{edu.titleOfStudy}</p>
-            <p>{edu.date}</p>
-          </div>
-        ))}
-      </div>
-      <button onClick={handlePrint} className="btn">Print CV</button>
+    <div className="cv-preview" ref={ref}>
+      <p id='name'>Name: {personalInfo.name || 'N/A'}</p>
+      <p>Email: {personalInfo.email || 'N/A'}</p>
+      <p>Phone: {personalInfo.phoneNumber || 'N/A'}</p>
+      <h2>Education</h2>
+      {educations.map((edu) => (
+        <div key={edu.id} className="education-entry">
+          <h3>{edu.school || 'School Name'}</h3>
+          <p>{edu.titleOfStudy || 'Title of Study'}</p>
+          <p>{edu.date || 'Study Dates'}</p>
+        </div>
+      ))}
     </div>
   );
-};
+});
 
 export default CVPreview;
