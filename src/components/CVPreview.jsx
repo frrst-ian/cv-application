@@ -1,23 +1,40 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
-import React from 'react';
+import React from "react";
 
-const CVPreview = React.forwardRef(({ personalInfo, educations }, ref) => {
-  return (
-    <div className="cv-preview" ref={ref}>
-      <p id='name'>Name: {personalInfo.name || 'N/A'}</p>
-      <p>Email: {personalInfo.email || 'N/A'}</p>
-      <p>Phone: {personalInfo.phoneNumber || 'N/A'}</p>
-      <h2>Education</h2>
-      {educations.map((edu) => (
-        <div key={edu.id} className="education-entry">
-          <h3>{edu.school || 'School Name'}</h3>
-          <p>{edu.titleOfStudy || 'Title of Study'}</p>
-          <p>{edu.date || 'Study Dates'}</p>
+const CVPreview = React.forwardRef(
+  ({ personalInfo, educations, experiences }, ref) => {
+    return (
+      <div className="cv-preview" ref={ref}>
+        <div className="personal-info">
+          <div className="info-1">
+            <p id="name">{personalInfo.name}</p>
+          </div>
+          <div className="info-2">
+            <p>{personalInfo.email}</p>
+            <p>{personalInfo.phoneNumber}</p>
+          </div>
         </div>
-      ))}
-    </div>
-  );
-});
+        <hr />
+        <h2>Education</h2>
+        {educations.map((edu) => (
+          <div key={edu.id} className="education-entry">
+            <h3>{edu.school}</h3>
+            <p>{edu.titleOfStudy}</p>
+            <p>{edu.date}</p>
+          </div>
+        ))}
+        <h2>Experience</h2>
+        {experiences.map((exp) => (
+          <div key={exp.id} className="exp-entry">
+            <h3>{exp.position}</h3>
+            <p>{exp.company}</p>
+            <p>{exp.dateOfWork}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+);
 
 export default CVPreview;

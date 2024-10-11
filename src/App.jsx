@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import CVPreview from "./components/CVPreview";
 import EditPersonalInfo from "./components/EditPersonalInfo";
 import Education from "./components/Education";
+import Experience from "./components/Experience";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "./App.css";
@@ -14,14 +15,18 @@ const App = () => {
     email: "",
     phoneNumber: "",
   });
+  
+  const handlePersonalInfoChange = (field, value) => {
+    setPersonalInfo((prev) => ({ ...prev, [field]: value }));
+  };
 
   const [educations, setEducations] = useState([
     { id: uuidv4(), school: "", titleOfStudy: "", date: "" },
   ]);
 
-  const handlePersonalInfoChange = (field, value) => {
-    setPersonalInfo((prev) => ({ ...prev, [field]: value }));
-  };
+  const [experiences, setExperiences] = useState([
+    { id: uuidv4(), position: "", company: "", dateOfWork: "" },
+  ]);
 
   const handleLoadExample = () => {
     setPersonalInfo({
@@ -43,11 +48,22 @@ const App = () => {
         date: "2012 - 2016",
       },
     ]);
+    setExperiences([
+      {
+        id: uuidv4(),
+        position: "CEO",
+        company: "ABC company",
+        dateOfWork: "2023 - 2024",
+      },
+    ]);
   };
 
   const handleReset = () => {
     setPersonalInfo({ name: "", email: "", phoneNumber: "" });
     setEducations([{ id: uuidv4(), school: "", titleOfStudy: "", date: "" }]);
+    setExperiences([
+      { id: uuidv4(), position: "", company: "", dateOfWork: "" },
+    ]);
   };
 
   const componentRef = useRef();
@@ -57,9 +73,9 @@ const App = () => {
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'in',
-        format: [8.5, 13]
+        orientation: "portrait",
+        unit: "in",
+        format: [8.5, 13],
       });
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -88,6 +104,7 @@ const App = () => {
           onPersonalInfoChange={handlePersonalInfoChange}
         />
         <Education educations={educations} setEducations={setEducations} />
+        <Experience experiences={experiences} setExperiences={setExperiences} />
         <div className="button-group">
           <button onClick={handleLoadExample} className="btn btn-load">
             Load Example
@@ -105,6 +122,7 @@ const App = () => {
           ref={componentRef}
           personalInfo={personalInfo}
           educations={educations}
+          experiences={experiences}
         />
       </div>
     </div>

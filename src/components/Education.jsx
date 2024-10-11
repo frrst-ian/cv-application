@@ -31,7 +31,7 @@ const Education = ({ educations, setEducations }) => {
             onChange={(e) =>
               handleEducationChange(edu.id, "school", e.target.value)
             }
-            placeholder="School"
+            placeholder="University"
           />
           <input
             type="text"
@@ -47,7 +47,7 @@ const Education = ({ educations, setEducations }) => {
             onChange={(e) =>
               handleEducationChange(edu.id, "date", e.target.value)
             }
-            placeholder="Date"
+            placeholder="Date of Study"
           />
         </div>
       ))}
