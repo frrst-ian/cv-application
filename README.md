@@ -74,7 +74,3 @@ The project lacks input validation , which is important in user interaction. If 
    ```bash
    npm run build
    ```
-5. To view the project in your browser:
-   ```bash
-   npm run dev
-   ``` 
