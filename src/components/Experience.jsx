@@ -36,7 +36,7 @@ const Experience = ({ experiences, setExperiences }) => {
         <div className="experience-form" key={exp.id}>
           <div className="title">
             <PackageCheck size={28} />
-            <h2>Experience</h2>
+            <h2 className="form-title">Experience</h2>
           </div>
 
           <input

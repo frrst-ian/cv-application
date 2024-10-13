@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&display=swap");
 *,
 *::before,
 *::after {
@@ -59,6 +63,8 @@ h6 {
   align-items: center;
   color: white;
   font-size: 1.4em;
+  gap: 6px;
+  font-family: "Raleway", sans-serif;
 }
 
 .form-section {
@@ -73,7 +79,6 @@ h6 {
   margin: 38px 0 20px 0;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
   border: 2px solid #0f172a;
-
 }
 
 .personal-form {
@@ -83,10 +88,9 @@ h6 {
   gap: 24px;
 }
 
-#header-personal-info,
-.education-form > h2,
-.experience-form > h2 {
+.form-title {
   color: #1e1b4b;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .education-form {
@@ -114,6 +118,10 @@ h6 {
   color: white;
 }
 
+button {
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .btn-load {
   background-color: #db2777;
 }
@@ -138,15 +146,16 @@ h6 {
 .button-group {
   display: flex;
   gap: 12px;
+  justify-content: center;
 }
 
 .cv-preview {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
   margin: 40px 0 0 0;
   border: 2px black solid;
-  padding: 16px;
+  padding: 70px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
   min-width: 500px;
   min-height: 70vh;
@@ -156,6 +165,8 @@ h6 {
 p#name {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #3b82f6;
+  font-family: "Raleway", sans-serif;
 }
 
 input,
@@ -164,10 +175,12 @@ textarea {
   border-radius: 6px;
   appearance: none;
   border: 2px solid #94a3b8;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 textarea {
   resize: none;
+  min-height: 150px;
 }
 
 input:hover,
@@ -201,9 +214,59 @@ textarea:hover,
   background-color: #1e293b;
   height: 50px;
   color: white;
+  font-family: "Raleway", sans-serif;
 }
 
 a {
-  text-decoration:none;
+  text-decoration: none;
   color: white;
+}
+
+.cv-prev-title {
+  color: #334155;
+  font-family: "Pacifico", sans-serif;
+  font-weight: 580;
+}
+
+hr {
+  margin-bottom: 12px;
+  margin-top: 12px;
+  border-top: 2px solid #020617;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 1.5em;
+}
+
+.subtitle + p {
+  font-size: 1.3em;
+}
+
+.info-2 > .info-div > p {
+  font-size: 1.1em;
+  color: #0f172a;
+  font-family: "Afacad Flux", sans-serif;
+}
+
+.info-div {
+  display: flex;
+  gap: 7px;
+}
+
+.education-entry,
+.exp-entry {
+  font-family: "Afacad Flux", sans-serif;
+  display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cv-title {
+  font-size: 1.4em;
+}
+
+.cv-responsibility {
+  font-size: 1.2em;
+  color: #334155;
 }

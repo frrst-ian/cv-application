@@ -8,7 +8,7 @@ const EditPersonalInfo = ({ personalInfo, onPersonalInfoChange }) => {
     <div className="personal-form">
       <div className="title">
         <FileUser size={28} />
-        <h2 id="header-personal-info">Personal Information</h2>
+        <h2 className="form-title">Personal Information</h2>
       </div>
 
       <input

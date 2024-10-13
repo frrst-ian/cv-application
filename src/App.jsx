@@ -7,6 +7,7 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import { Github } from "lucide-react";
 import { jsPDF } from "jspdf";
+import { FilePen } from 'lucide-react';
 import html2canvas from "html2canvas";
 import "./App.css";
 
@@ -113,6 +114,7 @@ const App = () => {
   return (
     <div className="app">
       <div className="header">
+        <FilePen size={42}/>
         <h2>CV Builder</h2>
       </div>
       <div className="main-container">

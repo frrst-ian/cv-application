@@ -30,7 +30,7 @@ const Education = ({ educations, setEducations }) => {
         <div className="education-form" key={edu.id}>
           <div className="title">
             <GraduationCap size={28} />
-            <h2>Education</h2>
+            <h2 className="form-title">Education</h2>
           </div>
 
           <input

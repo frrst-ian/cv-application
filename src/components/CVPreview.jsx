@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from "react";
+import { Mail } from "lucide-react";
+import { Phone } from "lucide-react";
+import { GraduationCap } from "lucide-react";
+import { PackageCheck } from "lucide-react";
+
 
 const CVPreview = React.forwardRef(
   ({ personalInfo, educations, experiences }, ref) => {
@@ -9,28 +14,41 @@ const CVPreview = React.forwardRef(
         <div className="personal-info">
           <div className="info-1">
             <p id="name">{personalInfo.name}</p>
+            
           </div>
           <div className="info-2">
-            <p>{personalInfo.email}</p>
-            <p>{personalInfo.phoneNumber}</p>
+            <div className="info-div">
+              <Mail size={25} color="#0f172a"/>
+              <p>{personalInfo.email}</p>
+            </div>
+            <div className="info-div">
+              <Phone color="#0f172a"/>
+              <p>{personalInfo.phoneNumber}</p>
+            </div>
           </div>
         </div>
         <hr />
-        <h2>Education</h2>
+        <div className="title cv-title">
+          <GraduationCap size={45} color="#0f172a" />
+          <h2 className="cv-prev-title">Education</h2>
+        </div>
         {educations.map((edu) => (
           <div key={edu.id} className="education-entry">
-            <h3>{edu.school}</h3>
+            <h3 className="subtitle">{edu.school}</h3>
             <p>{edu.titleOfStudy}</p>
             <p>{edu.date}</p>
           </div>
         ))}
-        <h2>Experience</h2>
+        <div className="title cv-title">
+          <PackageCheck size={45} color="#0f172a" />
+          <h2 className="cv-prev-title">Experience</h2>
+        </div>
         {experiences.map((exp) => (
           <div key={exp.id} className="exp-entry">
-            <h3>{exp.position}</h3>
+            <h3 className="subtitle">{exp.position}</h3>
             <p>{exp.company}</p>
             <p>{exp.dateOfWork}</p>
-            <p>{exp.responsibilities}</p>
+            <p className="cv-responsibility">{exp.responsibilities}</p>
           </div>
         ))}
       </div>
