@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from "react";
+import { FileUser } from "lucide-react";
 
 const EditPersonalInfo = ({ personalInfo, onPersonalInfoChange }) => {
   return (
     <div className="personal-form">
-      <h2 id="header-personal-info">Personal Information</h2>
+      <div className="title">
+        <FileUser size={28} />
+        <h2 id="header-personal-info">Personal Information</h2>
+      </div>
 
       <input
         type="text"

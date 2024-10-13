@@ -5,6 +5,7 @@ import CVPreview from "./components/CVPreview";
 import EditPersonalInfo from "./components/EditPersonalInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import { Github } from "lucide-react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "./App.css";
@@ -15,7 +16,7 @@ const App = () => {
     email: "",
     phoneNumber: "",
   });
-  
+
   const handlePersonalInfoChange = (field, value) => {
     setPersonalInfo((prev) => ({ ...prev, [field]: value }));
   };
@@ -25,7 +26,13 @@ const App = () => {
   ]);
 
   const [experiences, setExperiences] = useState([
-    { id: uuidv4(), position: "", company: "", dateOfWork: "" },
+    {
+      id: uuidv4(),
+      position: "",
+      company: "",
+      dateOfWork: "",
+      responsibilities: "",
+    },
   ]);
 
   const handleLoadExample = () => {
@@ -37,23 +44,24 @@ const App = () => {
     setEducations([
       {
         id: uuidv4(),
-        school: "University of Example",
+        school: "My Dream University",
         titleOfStudy: "Bachelor of Science in Computer Science",
         date: "2016 - 2020",
       },
       {
         id: uuidv4(),
-        school: "High School of Excellence",
-        titleOfStudy: "High School Diploma",
+        school: "My Dream HighSchool",
+        titleOfStudy: "Computer System",
         date: "2012 - 2016",
       },
     ]);
     setExperiences([
       {
         id: uuidv4(),
-        position: "CEO",
+        position: "Manager",
         company: "ABC company",
         dateOfWork: "2023 - 2024",
+        responsibilities: "Making sure the project is successful",
       },
     ]);
   };
@@ -62,7 +70,13 @@ const App = () => {
     setPersonalInfo({ name: "", email: "", phoneNumber: "" });
     setEducations([{ id: uuidv4(), school: "", titleOfStudy: "", date: "" }]);
     setExperiences([
-      { id: uuidv4(), position: "", company: "", dateOfWork: "" },
+      {
+        id: uuidv4(),
+        position: "",
+        company: "",
+        dateOfWork: "",
+        responsibilities: "",
+      },
     ]);
   };
 
@@ -98,32 +112,46 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="form-section">
-        <EditPersonalInfo
-          personalInfo={personalInfo}
-          onPersonalInfoChange={handlePersonalInfoChange}
-        />
-        <Education educations={educations} setEducations={setEducations} />
-        <Experience experiences={experiences} setExperiences={setExperiences} />
-        <div className="button-group">
-          <button onClick={handleLoadExample} className="btn btn-load">
-            Load Example
-          </button>
-          <button onClick={handleReset} className="btn btn-reset">
-            Reset
-          </button>
-          <button onClick={handleGeneratePDF} className="btn btn-pdf">
-            Generate PDF
-          </button>
+      <div className="header">
+        <h2>CV Builder</h2>
+      </div>
+      <div className="main-container">
+        <div className="form-section">
+          <EditPersonalInfo
+            personalInfo={personalInfo}
+            onPersonalInfoChange={handlePersonalInfoChange}
+          />
+          <Education educations={educations} setEducations={setEducations} />
+          <Experience
+            experiences={experiences}
+            setExperiences={setExperiences}
+          />
+          <div className="button-group">
+            <button onClick={handleLoadExample} className="btn btn-load">
+              Load Example
+            </button>
+            <button onClick={handleReset} className="btn btn-reset">
+              Reset
+            </button>
+            <button onClick={handleGeneratePDF} className="btn btn-pdf">
+              Generate PDF
+            </button>
+          </div>
+        </div>
+        <div className="preview-section">
+          <CVPreview
+            ref={componentRef}
+            personalInfo={personalInfo}
+            educations={educations}
+            experiences={experiences}
+          />
         </div>
       </div>
-      <div className="preview-section">
-        <CVPreview
-          ref={componentRef}
-          personalInfo={personalInfo}
-          educations={educations}
-          experiences={experiences}
-        />
+      <div className="footer">
+      <a href="https://github.com/frrst-ian" target="_blank" >
+            <Github size={30} />
+        </a>
+        <h3>Made by Ian Forrest</h3>
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ const CVPreview = React.forwardRef(
             <h3>{exp.position}</h3>
             <p>{exp.company}</p>
             <p>{exp.dateOfWork}</p>
+            <p>{exp.responsibilities}</p>
           </div>
         ))}
       </div>

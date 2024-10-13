@@ -2,12 +2,19 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { PackageCheck } from "lucide-react";
 
 const Experience = ({ experiences, setExperiences }) => {
   const handleAddExperience = () => {
     setExperiences([
       ...experiences,
-      { id: uuidv4(), position: "", company: "", dateOfWork: "" },
+      {
+        id: uuidv4(),
+        position: "",
+        company: "",
+        dateOfWork: "",
+        responsibilities: "",
+      },
     ]);
   };
 
@@ -19,11 +26,18 @@ const Experience = ({ experiences, setExperiences }) => {
     );
   };
 
+  const handleDeleteExperience = (id) => {
+    setExperiences(experiences.filter((exp) => exp.id !== id));
+  };
+
   return (
     <div>
       {experiences.map((exp) => (
         <div className="experience-form" key={exp.id}>
-          <h2>Experience</h2>
+          <div className="title">
+            <PackageCheck size={28} />
+            <h2>Experience</h2>
+          </div>
 
           <input
             type="text"
@@ -49,9 +63,24 @@ const Experience = ({ experiences, setExperiences }) => {
             }
             placeholder="Date of Work"
           />
+          <textarea
+            type="text"
+            value={exp.responsibilities}
+            onChange={(e) =>
+              handleExperienceChange(exp.id, "responsibilities", e.target.value)
+            }
+            placeholder="Responsibilities"
+          />
+
+          <button
+            className="btn btn-del"
+            onClick={() => handleDeleteExperience(exp.id)}
+          >
+            Delete Experience
+          </button>
         </div>
       ))}
-      <button className="btn" onClick={handleAddExperience}>
+      <button className="btn btn-add" onClick={handleAddExperience}>
         Add Experience
       </button>
     </div>

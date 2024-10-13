@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { GraduationCap } from "lucide-react";
 
 const Education = ({ educations, setEducations }) => {
   const handleAddEducation = () => {
@@ -19,11 +20,18 @@ const Education = ({ educations, setEducations }) => {
     );
   };
 
+  const handleDeleteEdu = (id) => {
+    setEducations(educations.filter((exp) => exp.id !== id));
+  };
+
   return (
     <div>
       {educations.map((edu) => (
         <div className="education-form" key={edu.id}>
-          <h2>Education</h2>
+          <div className="title">
+            <GraduationCap size={28} />
+            <h2>Education</h2>
+          </div>
 
           <input
             type="text"
@@ -49,9 +57,16 @@ const Education = ({ educations, setEducations }) => {
             }
             placeholder="Date of Study"
           />
+
+          <button
+            className="btn btn-del"
+            onClick={() => handleDeleteEdu(edu.id)}
+          >
+            Delete Education
+          </button>
         </div>
       ))}
-      <button className="btn" onClick={handleAddEducation}>
+      <button className="btn btn-add" onClick={handleAddEducation}>
         Add Education
       </button>
     </div>
