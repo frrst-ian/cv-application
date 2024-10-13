@@ -21,7 +21,7 @@ Click here: [https://cv-application404.netlify.app/](https://cv-application404.n
 ## Design
 
 <div align='center'>
-<img src='./public/ss.png.png' alt='Screenshot of desktop design'>
+<img src='./public/ss.png' alt='Screenshot of desktop design'>
 </div>
 
 ## Features
